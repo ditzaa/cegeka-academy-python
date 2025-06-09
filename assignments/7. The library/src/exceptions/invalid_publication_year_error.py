@@ -1,0 +1,2 @@
+class InvalidPublicationYearError(Exception):
+    pass

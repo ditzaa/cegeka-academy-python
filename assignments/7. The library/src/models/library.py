@@ -28,10 +28,16 @@ class Library:
 
         return removed_book
 
-    def search_book_by_title(self, title):
+    def get_book_by_title(self, title):
         for book in self._books.values():
             if book.get_title() == title:
                 return book
+
+    def borrow_book(self, book):
+        if book.get_isbn() not in self._books:
+            raise BookNotExistsError("Book with given ISBN does not exists")
+        book_from_library = self._books[book.get_isbn()]
+        book_from_library.set_availability(False)
 
     def __add__(self, book):
         if isinstance(book, Book):

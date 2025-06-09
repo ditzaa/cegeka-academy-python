@@ -1,0 +1,2 @@
+class BorrowingLimitError(Exception):
+    pass

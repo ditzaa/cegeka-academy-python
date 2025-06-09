@@ -1,6 +1,7 @@
 from exceptions.invalid_author_error import InvalidAuthorError
 from exceptions.invalid_availability_error import InvalidAvailabilityError
 from exceptions.invalid_book_error import InvalidBookError
+from exceptions.invalid_publication_year_error import InvalidPublicationYearError
 
 
 class Book:
@@ -41,15 +42,15 @@ class Book:
 
     def set_availability(self, availability):
         if not (availability is True or availability is False):
-            raise InvalidAvailabilityError("Availability of the book is too truth value")
+            raise InvalidAvailabilityError("Availability of the book is not a boolean value")
         self._availability = availability
 
     def get_publication_year(self):
         return self._publication_year
 
     def set_publication_year(self, publication_year):
-        # if publication_year:
-        #     raise InvalidPublicationYearError("Publication error of the book is too truth value")
+        if publication_year.isnumeric():
+            raise InvalidPublicationYearError("Publication error of the book is too truth value")
         self._publication_year = publication_year
 
     def __str__(self):
@@ -57,7 +58,6 @@ class Book:
                 f" Availability: {self._availability}, ID: {self.__id}")
 
     def __eq__(self, other):
-        print("Compare ")
         if isinstance(other, Book):
             if self._isbn == other.get_isbn():
                 return True
