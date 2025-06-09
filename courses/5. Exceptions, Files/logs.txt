@@ -1,0 +1,16 @@
+Start registration session
+End registration session
+2025-05-26 18:27:11.819191 - Start registration session
+2025-05-26 18:27:15.897191 - End registration session
+2025-05-26 18:39:36.375914 - Start registration session
+2025-05-26 18:39:43.551913 - End registration session
+2025-05-26 18:40:27.692911 - Start registration session
+2025-05-26 18:40:31.121915 - End registration session
+2025-05-29 10:05:39.380646 - Start registration session
+2025-05-29 10:05:44.469644 - End registration session
+2025-05-29 10:05:50.815669 - Start registration session
+2025-05-29 10:08:29.962058 - Start registration session
+2025-05-29 10:08:35.877060 - End registration session
+2025-05-29 10:11:17.354837 - Start registration session
+2025-05-29 10:14:37.705872 - Start registration session
+2025-05-29 10:14:42.699877 - End registration session

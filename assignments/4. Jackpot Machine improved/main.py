@@ -3,7 +3,6 @@ import sys
 
 def return_jackpot_improved(*jackpots):
     """
-
     :param jackpots: list of amounts won at the slot machine
     :return: list of tuples representing each jackpot returned according to the required denomination
     """
@@ -31,4 +30,4 @@ if __name__ == "__main__":
 # function testing
 # print(return_jackpot_improved())
 # print(return_jackpot_improved(8.01))
-# print(return_jackpot_improved(8.01, 19.99, 37.88))
+# print(return_jackpot_improved(19.99, 37.88))

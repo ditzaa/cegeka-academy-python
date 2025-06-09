@@ -1,0 +1,2 @@
+class InvalidAuthorError(Exception):
+    pass

@@ -1,0 +1,11 @@
+The analysis of the students
+
+Average age of the students: 20.7
+-----------------------------
+Highest grade amongst the students: 10.0
+-----------------------------
+Students with the lowest grade:
+Ioan - 2.9
+-----------------------------
+Passing rate: 70.0%
+-----------------------------

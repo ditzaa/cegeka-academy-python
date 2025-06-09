@@ -1,0 +1,2 @@
+class InvalidAvailabilityError(Exception):
+    pass
