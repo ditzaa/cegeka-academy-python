@@ -1,0 +1,2 @@
+class BookNotExistsError(Exception):
+    pass
