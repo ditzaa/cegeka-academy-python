@@ -78,6 +78,11 @@ def main():
     borrower: Borrower = User("Alice")
     borrower.borrow_book(library, book4)
     borrower.display_borrowed_books()
+    print()
+
+    print("Iterate through library")
+    for book in library:
+        print(str(book))
 
 
 if __name__ == '__main__':

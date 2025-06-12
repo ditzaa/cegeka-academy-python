@@ -7,6 +7,7 @@ class Library:
 
     def __init__(self):
         self._books = {}
+        self._no_books = 0
 
     def get_books(self):
         return self._books.copy()
@@ -16,6 +17,7 @@ class Library:
             raise BookAlreadyExistsError("Book already exists in library")
         else:
             self._books[book.get_isbn()] = book
+            self._no_books += 1
 
     def display_books(self):
         for book in self._books.values():
@@ -25,6 +27,7 @@ class Library:
         if isbn not in self._books:
             raise BookNotExistsError("Book with given ISBN does not exists")
         removed_book = self._books.pop(isbn)
+        self._no_books += 1
 
         return removed_book
 
@@ -43,3 +46,6 @@ class Library:
         if isinstance(book, Book):
             self.add_book(book)
         return self
+
+    def __iter__(self):
+        return iter(self._books.values())
