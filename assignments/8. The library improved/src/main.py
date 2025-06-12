@@ -80,8 +80,31 @@ def main():
     borrower.display_borrowed_books()
     print()
 
-    print("Iterate through library")
+    print("Iterate through the library")
     for book in library:
+        print(str(book))
+    print()
+
+    print("Serialization and deserialization")
+    library2 = Library()
+    library2.add_book(book3)
+    library2.add_book(book4)
+    library2.add_book(book5)
+    library2.save()
+
+    library2.add_book(book1)
+    library2.add_book(book2)
+
+    print("Current library2 state:")
+    for book in library2:
+        print(str(book))
+
+    empty_library = Library()
+    print("\nRestoring library2 old state from saved binary file...")
+    library2.restore(empty_library)
+
+    print("Restored library2 old state:")
+    for book in library2:
         print(str(book))
 
 
