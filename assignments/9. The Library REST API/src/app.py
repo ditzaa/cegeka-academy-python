@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask
 from src.config import Config
 from src.controllers.api_controller import api_blueprint
 from src.controllers.book_controller import book_blueprint
