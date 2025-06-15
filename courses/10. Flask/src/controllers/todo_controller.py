@@ -19,21 +19,6 @@ def add_todo(task):
     return new_todo
 
 
-def get_todo(id):
-    for x in todos:
-        if x.id == id:
-            return x
-    return None
-
-
-def delete_todo(x):
-    for x in todos:
-        if x.id == id:
-            deleted_todo = x
-            todos.remove(x)
-            return deleted_todo
-    return None
-
 @todo_blueprint.route('/todo', methods=['POST'])
 def post_todo():
     todo = request.get_json()
