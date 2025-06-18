@@ -1,19 +1,24 @@
-class Book:
-    _counter = 1
+from src.db import BaseClass
+from sqlalchemy import Column, Integer, String
 
-    def __init__(self, title="NA", author="NA", isbn="NA", availability=False, publication_year="NA", genre="NA"):
-        self.id = Book._counter
-        Book._counter += 1
+
+class Book(BaseClass):
+    __tablename__ = "books"
+    id = Column(Integer, primary_key=True)
+    title = Column(String(500), nullable="NA")
+    author = Column(String(500), nullable=False, default="NA")
+    isbn = Column(String(500), nullable=False, default="NA")
+    no_copies = Column(Integer, nullable=False, default=0)
+    publication_year = Column(Integer, nullable=False, default="NA")
+    genre = Column(String(500), nullable=True, default="NA")
+
+    def __init__(self, title="NA", author="NA", isbn="NA", no_copies=0, publication_year="NA", genre="NA"):
         self.title = title
         self.author = author
         self.isbn = isbn
-        self.availability = availability
+        self.no_copies = no_copies
         self.publication_year = publication_year
         self.genre = genre
-
-    @staticmethod
-    def set_counter(nb: int):
-        Book._counter = nb
 
     def get_id(self):
         return self.id
@@ -39,11 +44,11 @@ class Book:
     def set_isbn(self, isbn):
         self.isbn = isbn
 
-    def get_availability(self):
-        return self.availability
+    def get_no_copies(self):
+        return self.no_copies
 
-    def set_availability(self, availability):
-        self.availability = availability
+    def set_no_copies(self, no_copies):
+        self.no_copies = no_copies
 
     def get_publication_year(self):
         return self.publication_year
@@ -52,8 +57,8 @@ class Book:
         self.publication_year = publication_year
 
     def __str__(self):
-        return (f"ID: {self.id}, Title: {self.title}, Author: {self.author}, ISBN: {self.isbn}"
-                f" Availability: {self.availability}, Publication Year: {self.publication_year}, Genre: {self.genre}")
+        return (f"ID: {self.id}, Title: {self.title}, Author: {self.author}, ISBN: {self.isbn},"
+                f"Nb. of copies: {self.no_copies}, Publication Year: {self.publication_year}, Genre: {self.genre}")
 
     def to_json_dict(self):
         return {
@@ -61,7 +66,8 @@ class Book:
             "title": self.title,
             "author": self.author,
             "isbn": self.isbn,
-            "availability": self.availability,
+            "no_copies": self.no_copies,
             "publication_year": self.publication_year,
             "genre": self.genre,
+
         }
