@@ -1,4 +1,6 @@
 from src.models.book import Book
+from src.models.user_book import user_book
+from src.models.user import User
 from flask import Flask
 from src.config import Config
 from src.controllers.api_controller import api_blueprint

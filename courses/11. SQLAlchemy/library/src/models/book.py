@@ -1,3 +1,5 @@
+from sqlalchemy.orm import relationship
+from src.models.user_book import user_book
 from src.db import BaseClass
 from sqlalchemy import Column, Integer, String
 
@@ -5,12 +7,14 @@ from sqlalchemy import Column, Integer, String
 class Book(BaseClass):
     __tablename__ = "books"
     id = Column(Integer, primary_key=True)
-    title = Column(String(500), nullable="NA")
+    title = Column(String(500), nullable=False, default='NA')
     author = Column(String(500), nullable=False, default="NA")
     isbn = Column(String(500), nullable=False, default="NA")
     no_copies = Column(Integer, nullable=False, default=0)
     publication_year = Column(Integer, nullable=False, default="NA")
     genre = Column(String(500), nullable=True, default="NA")
+
+    borrowers = relationship("User", secondary=user_book, back_populates="borrowed_books")
 
     def __init__(self, title="NA", author="NA", isbn="NA", no_copies=0, publication_year="NA", genre="NA"):
         self.title = title
@@ -69,5 +73,4 @@ class Book(BaseClass):
             "no_copies": self.no_copies,
             "publication_year": self.publication_year,
             "genre": self.genre,
-
         }
