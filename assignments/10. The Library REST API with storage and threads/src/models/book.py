@@ -1,7 +1,7 @@
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from src.models.user_book import user_book
 from src.db import BaseClass
-from sqlalchemy import Column, Integer, String
 
 
 class Book(BaseClass):
@@ -11,6 +11,7 @@ class Book(BaseClass):
     author = Column(String(500), nullable=False, default="NA")
     isbn = Column(String(500), nullable=False, default="NA")
     no_copies = Column(Integer, nullable=False, default=0)
+    no_loaned_books = Column(Integer, nullable=False, default=0)
     publication_year = Column(Integer, nullable=False, default="NA")
     genre = Column(String(500), nullable=True, default="NA")
 
@@ -21,6 +22,7 @@ class Book(BaseClass):
         self.author = author
         self.isbn = isbn
         self.no_copies = no_copies
+        self.no_loaned_books = 0
         self.publication_year = publication_year
         self.genre = genre
 
@@ -54,6 +56,12 @@ class Book(BaseClass):
     def set_no_copies(self, no_copies):
         self.no_copies = no_copies
 
+    def get_no_loaned_books(self):
+        return self.no_loaned_books
+
+    def set_no_loaned_books(self, no_loaned_books):
+        self.no_loaned_books = no_loaned_books
+
     def get_publication_year(self):
         return self.publication_year
 
@@ -71,6 +79,7 @@ class Book(BaseClass):
             "author": self.author,
             "isbn": self.isbn,
             "no_copies": self.no_copies,
+            "no_loaned_books": self.no_loaned_books,
             "publication_year": self.publication_year,
             "genre": self.genre,
         }

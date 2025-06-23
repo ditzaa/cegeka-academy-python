@@ -1,4 +1,4 @@
-from src.services.books_service import get_books, get_book, add_book, borrow_book, return_book, remove_book
+from src.services.books_service import get_books, get_book, add_book, remove_book
 from flask import blueprints, jsonify, request
 
 book_blueprint = blueprints.Blueprint('book', __name__)
@@ -31,29 +31,6 @@ def post_book():
     new_book = add_book(book)
     new_book = new_book.to_json_dict()
     return jsonify(new_book), 200
-
-
-@book_blueprint.route('/books/borrow/<int:book_id>', methods=['PATCH'])
-def patch_borrow_book(book_id):
-    book = get_book(book_id)
-    if book.get_no_copies() == 0:
-        return jsonify({"error": "Book has no copies available"}), 400
-    borrowed_book = borrow_book(book_id)
-    if not borrowed_book:
-        return jsonify({"error": "Book could not be borrowed"}), 400
-
-    borrowed_book = borrowed_book.to_json_dict()
-    return jsonify(borrowed_book), 200
-
-
-@book_blueprint.route('/books/return/<int:book_id>', methods=['PATCH'])
-def patch_return_book(book_id):
-    book = get_book(book_id)
-    returned_book = return_book(book_id)
-    if not returned_book:
-        return jsonify({"error": "Book could not be returned"}), 400
-    returned_book = returned_book.to_json_dict()
-    return jsonify(returned_book), 200
 
 
 @book_blueprint.route('/books/<int:book_id>', methods=['DELETE'])
